@@ -45,3 +45,11 @@ $pos$ 番目の要素の値を返す.
 ```cpp
 int max_right(int l, const std::function<bool(S)>& f)
 ```
+$r=n$ または $f(\mathrm{fold}(l, r))=\mathrm{true}$，かつ $r=l$ または $f(\mathrm{fold}(l, r+1))=\mathrm{false}$ を満たす $r$ を返す.
+- $O(\log N)$ time
+## min_left
+```cpp
+int min_left(int r, const std::function<bool(S)>& f)
+```
+$l=0$ または $f(\mathrm{fold}(l, r))=\mathrm{true}$，かつ $l=0$ または $f(\mathrm{fold}(l-1, r))=\mathrm{false}$ を満たす $l$ を返す.
+- $O(\log N)$ time
