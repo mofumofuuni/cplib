@@ -50,6 +50,8 @@ class segmenttree {
         while (l < r) {
             if (l & 1) resl = op(resl, M_dat[l++]);
             if (r & 1) resr = op(M_dat[--r], resr);
+            l >>= 1;
+            r >>= 1;
         }
     }
     S all_fold() const { return M_dat[1]; }
