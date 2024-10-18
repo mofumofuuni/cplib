@@ -103,6 +103,10 @@ class Cinstream {
     Cinstream& operator>>(long double& dest) { dest = nextLdouble(); return *this; }
     Cinstream& operator>>(std::string& dest) { dest = nextToken(); return *this; }
     Cinstream& operator>>(char& dest) { dest = nextchar(); return *this; }
+    template <typename T, typename U>
+    Cinstream& operator>>(std::pair<T, U>& dest) { (*this) >> dest.first >> dest.second; return *this; }
+    template <typename T>
+    Cinstream& operator>>(std::vector<T>& dest) { for (auto& i : dest) (*this) >> i; return *this; }
 } cin;
 
 struct fastoutputtable {
@@ -251,6 +255,10 @@ class Coutstream {
     Coutstream& operator<<(char tg) { nextchar(tg); return *this; }
     Coutstream& operator<<(double tg) { nextDouble(tg); return *this;}
     Coutstream& operator<<(long double tg) { nextLdouble(tg); return *this; }
+    template <typename T, typename U>
+    Coutstream& operator<<(const std::pair<T, U>& tg) { (*this) << tg.first << ' ' << tg.second; return *this; }
+    template <typename T>
+    Coutstream& operator<<(const std::vector<T>& tg) { for (size_t i = 0; i < tg.size(); ++i) { if (i > 0) (*this) << ' '; (*this) << tg[i]; } return *this; }
 } cout;
 
 char Cinstream::Q[BUF_SIZE];
