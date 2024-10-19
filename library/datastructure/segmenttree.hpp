@@ -15,7 +15,6 @@ class segmenttree {
         for (int i = 0; i < M_n; ++i) M_dat[M_sz + i] = v[i];
         for (int i = M_sz - 1; i >= 1; --i) M_dat[i] = op(M_dat[i << 1], M_dat[i << 1 | 1]);
     }
-    explicit segmenttree(std::vector<S>&& v) : segmenttree(std::move<std::vector<S>>(v)) {}
 
     void set(int pos, S x) {
         pos += M_sz;
@@ -27,7 +26,7 @@ class segmenttree {
     }
 
     void add(int pos, S x) {
-        pos += sz;
+        pos += M_sz;
         M_dat[pos] += x;
         while (pos > 1) {
             pos >>= 1;
